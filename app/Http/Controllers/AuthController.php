@@ -80,7 +80,7 @@ class AuthController extends Controller
     {
         $user = Auth::user();
 
-        if($user->role == 'admin')
+        if($user->email == 'ajith202005@gmail.com')
         {
             return redirect('/admin/dashboard');
         }
