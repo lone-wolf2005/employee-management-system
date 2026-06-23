@@ -81,9 +81,9 @@ class AuthController extends Controller
         $user = Auth::user();
 
         // Admin Login
-        if ($user->email === 'ajith202005@gmail.com')
+        if($user->email == 'ajith202005@gmail.com')
         {
-            return redirect('/admin/dashboard');
+            dd('ADMIN DETECTED');
         }
 
         // Employee Login
