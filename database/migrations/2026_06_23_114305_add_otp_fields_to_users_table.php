@@ -12,22 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function ($table) {
-    
             if (!Schema::hasColumn('users', 'otp')) {
                 $table->string('otp')->nullable();
             }
-    
+            
             if (!Schema::hasColumn('users', 'otp_expiry')) {
                 $table->timestamp('otp_expiry')->nullable();
             }
-    
         });
     }
 
-public function down(): void
-{
-    Schema::table('users', function ($table) {
-        $table->dropColumn('role');
-    });
-}
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
+    }
 };

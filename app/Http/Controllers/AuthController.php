@@ -108,36 +108,32 @@ class AuthController extends Controller
 
     // Send Reset OTP
     public function sendResetOtp(Request $request)
-    {
-        $login = $request->login;
+{
+    $login = $request->login;
 
-        $field = filter_var($login, FILTER_VALIDATE_EMAIL)
-            ? 'email'
-            : 'phone';
+    $user = User::where('email', $login)->first();
 
-        $user = User::where($field, $login)->first();
-
-        if (!$user) {
-            return back()->with(
-                'error',
-                'User not found'
-            );
-        }
-
-        $otp = rand(100000, 999999);
-
-        $user->otp = $otp;
-        $user->save();
-
-        session([
-            'reset_login' => $login
-        ]);
-
+    if (!$user) {
         return back()->with(
-            'success',
-            'OTP Sent Successfully. OTP: ' . $otp
+            'error',
+            'User not found'
         );
     }
+
+    $otp = rand(100000, 999999);
+
+    $user->otp = $otp;
+    $user->save();
+
+    session([
+        'reset_login' => $login
+    ]);
+
+    return back()->with(
+        'success',
+        'OTP Sent Successfully. OTP: ' . $otp
+    );
+}
 
     // Verify Reset OTP
     public function verifyResetOtp(Request $request)
