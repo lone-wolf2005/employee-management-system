@@ -156,6 +156,10 @@
                        required>
             </div>
         </div>
+        <input type="text"
+       name="department"
+       value="{{ $employee->department }}"
+       class="form-control">
 
         <div class="section-title">Location Details</div>
 
@@ -271,7 +275,7 @@
           required>{{ $employee->address ?? '' }}</textarea>
         </label>
 
-        <
+        
 
         
                <label>Date of Birth <span style="color:red">*</span></label>

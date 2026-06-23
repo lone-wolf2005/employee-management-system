@@ -209,6 +209,7 @@ label{
     <input type="radio" name="gender" value="Others">
     Others
 </label>
+<label>Department</label>
 <select name="department" class="form-control">
     <option value="IT">IT</option>
     <option value="HR">HR</option>
