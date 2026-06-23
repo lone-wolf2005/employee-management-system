@@ -34,9 +34,6 @@ class AuthController extends Controller
         User::create([
             'name' => $request->first_name.' '.$request->last_name,
             'email' => $request->email,
-            'phone' => $request->phone,
-            'country_code' => $request->country_code,
-            
             'password' => Hash::make($request->password)
         ]);
         $employeeNo = Employee::max('employee_no') + 1;

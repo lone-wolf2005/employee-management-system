@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
 {
     Schema::table('users', function ($table) {
-        $table->string('role')->default('user');
+        $table->string('phone')->nullable();
+        $table->string('country_code')->nullable();
     });
 }
 
