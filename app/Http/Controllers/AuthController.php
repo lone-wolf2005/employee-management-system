@@ -44,7 +44,7 @@ class AuthController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'department' => 'Not Assigned',
+            'department' => $request->department,
             'designation' => 'Employee',
             'salary' => $request->salary ?? 0,
             'joining_date' => date('Y-m-d'),

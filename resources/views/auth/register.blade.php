@@ -147,7 +147,7 @@ label{
 
     <h2>Employee Registration</h2>
 
-    <form method="POST" action="/register">
+    <form method="POST" action="/register" enctype="multipart/form-data">
         @csrf
 
         <div class="section-title">Personal Information</div>
@@ -209,6 +209,11 @@ label{
     <input type="radio" name="gender" value="Others">
     Others
 </label>
+<select name="department" class="form-control">
+    <option value="IT">IT</option>
+    <option value="HR">HR</option>
+    <option value="Finance">Finance</option>
+</select>
 
         </div>
 
