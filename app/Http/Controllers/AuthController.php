@@ -68,7 +68,7 @@ class AuthController extends Controller
     public function login(Request $request)
 {
     $login = $request->login;
-
+    
     $field = filter_var($login, FILTER_VALIDATE_EMAIL)
         ? 'email'
         : 'phone';
@@ -80,6 +80,7 @@ class AuthController extends Controller
     {
         $user = Auth::user();
 
+        dd($user);
         // Admin Login
         if($user->email == 'ajith202005@gmail.com')
         {
