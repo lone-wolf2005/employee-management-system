@@ -127,7 +127,16 @@ public function update(Request $request, $id)
 {
     $employee = Employee::findOrFail($id);
 
-    $employee->update($request->all());
+    $employee->employee_id = $request->employee_id;
+    $employee->first_name = $request->first_name;
+    $employee->last_name = $request->last_name;
+    $employee->email = $request->email;
+    $employee->phone = $request->phone;
+    $employee->department = $request->department;
+    $employee->salary = $request->salary;
+    $employee->dob = $request->dob;
+
+    $employee->save();
 
     return redirect('/admin/dashboard')
         ->with('success', 'Employee Updated Successfully');

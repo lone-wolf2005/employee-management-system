@@ -148,13 +148,7 @@
                 </select>
             </div>
 
-            <div class="col-9">
-                <input type="text"
-                       class="form-control"
-                       name="phone"
-                       placeholder="Enter Phone Number"
-                       required>
-            </div>
+            
         </div>
         <input type="text"
        name="department"
