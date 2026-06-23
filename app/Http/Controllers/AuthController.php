@@ -36,7 +36,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'country_code' => $request->country_code,
-            'role' => 'employee',
+            
             'password' => Hash::make($request->password)
         ]);
         $employeeNo = Employee::max('employee_no') + 1;
@@ -68,7 +68,7 @@ class AuthController extends Controller
     public function login(Request $request)
 {
     $login = $request->login;
-    
+
     $field = filter_var($login, FILTER_VALIDATE_EMAIL)
         ? 'email'
         : 'phone';
@@ -80,14 +80,11 @@ class AuthController extends Controller
     {
         $user = Auth::user();
 
-        dd($user);
-        // Admin Login
-        if($user->email == 'ajith202005@gmail.com')
+        if(trim(strtolower($user->email)) == 'ajith202005@gmail.com')
         {
-            dd('ADMIN DETECTED');
+            return redirect('/admin/dashboard');
         }
 
-        // Employee Login
         return redirect('/employee/dashboard');
     }
 
