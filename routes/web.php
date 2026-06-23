@@ -29,6 +29,7 @@ Route::post('/login', [AuthController::class, 'login'])
     ->name('login.post');
 Route::get('/logout', [AuthController::class, 'logout']);
 
+
 /*
 |--------------------------------------------------------------------------
 | OTP Verification
@@ -137,4 +138,5 @@ Route::post(
     '/employee/upload-files',
     [EmployeeController::class,'uploadFiles']
     );
+
     

@@ -66,30 +66,36 @@ class AuthController extends Controller
 
     // Login
     public function login(Request $request)
+{
+    $login = $request->login;
+
+    $field = filter_var($login, FILTER_VALIDATE_EMAIL)
+        ? 'email'
+        : 'phone';
+
+    if (Auth::attempt([
+        $field => $login,
+        'password' => $request->password
+    ]))
     {
-        $login = $request->login;
-    
-        $field = filter_var($login, FILTER_VALIDATE_EMAIL)
-            ? 'email'
-            : 'phone';
-    
-        if (Auth::attempt([
-            $field => $login,
-            'password' => $request->password
-        ]))
+        $user = Auth::user();
+
+        // Admin Login
+        if ($user->email === 'ajith202005@gmail.com')
         {
-            $user = Auth::user();
-    
-            if (strtolower(trim($user->email)) == 'ajith202005@gmail.com')
-            {
-                return redirect('/admin/dashboard');
-            }
-    
-            return redirect('/employee/dashboard');
+            return redirect('/admin/dashboard');
         }
-    
-        return back()->with('error', 'Invalid Login Credentials');
+
+        // Employee Login
+        return redirect('/employee/dashboard');
     }
+
+    return back()->with(
+        'error',
+        'Invalid Login Credentials'
+    );
+}
+    
 
     // Logout
     public function logout()
