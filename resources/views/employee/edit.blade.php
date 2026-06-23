@@ -150,6 +150,7 @@
 
             
         </div>
+        <label>Department</label>
         <input type="text"
        name="department"
        value="{{ $employee->department }}"
